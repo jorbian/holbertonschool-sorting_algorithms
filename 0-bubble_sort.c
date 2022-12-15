@@ -13,6 +13,9 @@ void bubble_sort(int *array, size_t size)
 	int switch_was_made = FALSE;
 	int current_value[2];
 
+	if (array == NULL || size == NULL)
+		return;
+
 	for (i = 0; (i <= size - 2); i++)
 	{
 		current_value[0] = array[i];
