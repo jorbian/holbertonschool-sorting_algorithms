@@ -10,6 +10,9 @@ void selection_sort(int *array, size_t size)
 	unsigned long i, j, index_of_min;
 	int temp_buff;
 
+	if ((array == NULL) || (size < 2))
+		return;
+
 	for (i = 0; i < size - 1; i++)
 	{
 		index_of_min = i;
