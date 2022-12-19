@@ -22,6 +22,8 @@ void selection_sort(int *array, size_t size)
 			if (array[j] < array[index_of_min])
 				index_of_min = j;
 		}
+		if (array[index_of_min] == array[i])
+			continue;
 
 		temp_buff = array[index_of_min];
 		array[index_of_min] = array[i];
