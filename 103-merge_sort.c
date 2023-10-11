@@ -7,6 +7,20 @@
 #define RIGHT_SIZE(s) (s - (s / 2))
 
 /**
+ * place_element - moves an element into place
+ * @original: original array we're sorting
+ * @slice: the slice we're working from
+ * @i: pointer to target index on original
+ * @s: pointer to the index of element we're moving over
+*/
+static void place_element(int *original, int *slice, size_t *i, size_t *s)
+{
+	original[(*i)] = slice[(*s)];
+	(*i)++;
+	(*s)++;
+}
+
+/**
  * merge_arrays - sorts and merges arrays created from merge_sort
  * @left: the left array to be sorted
  * @right: the right array to be sorted
@@ -20,30 +34,17 @@ static void merge_arrays(int *left, int *right, int *original, size_t size)
 	while (l < LEFT_SIZE(size) && r < RIGHT_SIZE(size))
 	{
 		if (left[l] < right[r])
-		{
-			original[i] = left[l];
-			i++;
-			l++;
-		}
+			place_element(original, left, &i, &l);
 		else
-		{
-			original[i] = right[r];
-			i++;
-			r++;
-		}
+			place_element(original, right, &i, &r);
 	}
+
 	while (l < LEFT_SIZE(size))
-	{
-		original[i] = left[l];
-		i++;
-		l++;
-	}
+		place_element(original, left, &i, &l);
+
 	while (r < RIGHT_SIZE(size))
-	{
-		original[i] = right[r];
-		i++;
-		r++;
-	}
+		place_element(original, right, &i, &r);
+
 	printf("Merging...\n[left]: ");
 	print_array(left, LEFT_SIZE(size));
 	printf("[right]: ");
@@ -54,6 +55,7 @@ static void merge_arrays(int *left, int *right, int *original, size_t size)
 	free(right);
 	free(left);
 }
+
 /**
  * allocate_slice - allocates memory for an array of ints
  * @size: size of the array to allocate
