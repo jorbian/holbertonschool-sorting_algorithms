@@ -47,7 +47,7 @@ static void merge_arrays(int *left, int *right, int *original, size_t size)
 	printf("Merging...\n[left]: ");
 	print_array(left, LEFT_SIZE(size));
 	printf("[right]: ");
-	print_array(left, RIGHT_SIZE(size));
+	print_array(right, RIGHT_SIZE(size));
 	printf("[Done]: ");
 	print_array(original, size);
 
