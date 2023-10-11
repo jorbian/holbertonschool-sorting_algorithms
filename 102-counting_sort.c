@@ -10,18 +10,18 @@ static int *initalize_count(size_t size);
  * find_max - find the largest value in an array of integers
  * @array: an array of positive integers to be sorted
  * @size: how many such integers there are
- * 
+ *
  * Return: whatever the largest value was
 */
-static size_t find_max(int *array, size_t size) 
+static size_t find_max(int *array, size_t size)
 {
 	size_t i;
 	size_t max = array[0];
 
-	for(i = 1; i < size; i++) 
+	for (i = 1; i < size; i++)
 	{
-		if ((size_t)array[i] > max) 
-			max = array[i]; 
+		if ((size_t)array[i] > max)
+			max = array[i];
 	}
 	return (max);
 }
@@ -29,8 +29,8 @@ static size_t find_max(int *array, size_t size)
 /**
  * initalize_count - creates the count array and populates it with 0s
  * @size: range of the count
- * 
- * Return: a pointer to the newly created rray 
+ *
+ * Return: a pointer to the newly created rray
 */
 static int *initalize_count(size_t size)
 {
@@ -52,7 +52,7 @@ static int *initalize_count(size_t size)
  * perform_sort - determines what sorted array will look like
  * @array: an array of positive integers to be sorted
  * @size: how many such integers there are
- * 
+ *
  * Return: pointer new array to change old one to
 */
 static int *perform_sort(int *array, size_t size)
