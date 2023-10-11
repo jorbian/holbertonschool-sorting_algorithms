@@ -3,9 +3,6 @@
 
 #include "sort.h"
 
-static size_t find_max(int *array, size_t size);
-static int *initalize_count(size_t size);
-
 /**
  * find_max - find the largest value in an array of integers
  * @array: an array of positive integers to be sorted
@@ -92,6 +89,22 @@ static int *perform_sort(int *array, size_t size)
 }
 
 /**
+ * copy_result - copy the results of the sort into original array
+ * @original: pointer to the original array
+ * @sorted: pointer to the sorted version
+ * @size: how big they are
+*/
+static void copy_result(int *original, int *sorted, size_t size)
+{
+	size_t i;
+
+	for (i = 0; i < size; i++)
+		original[i] = sorted[i];
+
+	free(sorted);
+}
+
+/**
  * counting_sort - implementation of counting sort
  * @array: an array of positive integers to be sorted
  * @size: how many such integers there are
@@ -99,7 +112,6 @@ static int *perform_sort(int *array, size_t size)
 void counting_sort(int *array, size_t size)
 {
 	int *sorted_array;
-	size_t l;
 
 	if (!array || (size < 2))
 		return;
@@ -108,8 +120,5 @@ void counting_sort(int *array, size_t size)
 	if (sorted_array == NULL)
 		return;
 
-	for (l = 0; l < size; l++)
-		array[l] = sorted_array[l];
-
-	free(sorted_array);
+	copy_result(array, sorted_array, size);
 }
