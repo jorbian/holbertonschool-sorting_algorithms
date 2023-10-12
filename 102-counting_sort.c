@@ -33,14 +33,11 @@ static int *initalize_count(size_t size)
 {
 	int *new_count;
 
-	size_t i;
-
-	new_count = malloc(sizeof(int) * size + 1);
-	if (!new_count)
+	new_count = malloc((size) * sizeof(int));
+	if (new_count == NULL)
 		return (NULL);
 
-	for (i = 0; i <= size; i++)
-		new_count[i] = 0;
+	memset(new_count, 0, size * sizeof(int));
 
 	return (new_count);
 }
